@@ -5,7 +5,7 @@
 
 ## Checklist (after reading the vendor guide)
 
-- [ ] Clear subject and setting; camera behavior described (not just "cinematic").
+- [ ] Clear subject and setting; camera behavior described (not just “cinematic”).
 - [ ] Motion: what moves, what stays stable across the clip.
 - [ ] Lighting and style named explicitly if important.
 - [ ] If using `refImageAsBase64`, describe how motion should relate to the reference.
