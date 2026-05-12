@@ -15,7 +15,7 @@ validate_auth() {
   local code
   code="$(curl -sS -o /dev/null -w "%{http_code}" \
     -H "Authorization: $header" "$BASE_URL/v1/products" || echo "000")"
-  [[ "$code" == "200" ]]
+  [[  "$code" == "200" ]]
 }
 
 # Mask all but the last 4 chars of a secret for display.
@@ -29,7 +29,7 @@ mask_secret() {
   fi
 }
 
-# ── Step 1: .env ───────────────────────────────────────────────────────────────────────────────
+# ── Step 1: .env ────────────────────────────────────────────────────────────────────────────────
 if [[ ! -f "$ROOT/.env" ]]; then
   cp "$ROOT/.env.example" "$ROOT/.env"
   echo "Created .env from template."
@@ -96,12 +96,12 @@ fi
 
 echo ""
 
-# ── Step 3: Sync skills to .claude/ and .cursor/ ─────────────────────────────────────────────────
-"$ROOT/scripts/sync-skill.sh"
+# ── Step 3: Sync skills to .claude/ and .cursor/ ─────────────────────────────────────────────────────────
+"$ROOT/shared/scripts/sync-skill.sh"
 
 echo ""
 
-# ── Step 4: Verify API connectivity ──────────────────────────────────────────────────────────────────
+# ── Step 4: Verify API connectivity ────────────────────────────────────────────────────────────────────────
 if grep -q "your_base64_encoded_credentials_here" "$ROOT/.env" 2>/dev/null || grep -q "your_key_here" "$ROOT/.env" 2>/dev/null; then
   echo "Credentials not yet set in .env — skipping connectivity check."
   echo "Run ./scripts/check-arcads-env.sh after adding your credentials."
